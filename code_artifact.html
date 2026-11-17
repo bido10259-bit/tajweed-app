@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الموسوعة الشاملة لأحكام التجويد | تلاوة وإتقان</title>
+    
+    <!-- تحميل Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- تحميل خطوط عربية فاخرة: Amiri للنصوص القرآنية و Cairo للواجهات -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                        quran: ['Amiri', 'serif'],
+                    },
+                    colors: {
+                        obsidian: {
+                            950: '#090B0E',
+                            900: '#0F1319',
+                            800: '#161C24',
+                            700: '#1F2732',
+                        },
+                        gold: {
+                            300: '#F3D899',
+                            400: '#E2BE6F',
+                            500: '#C89D46',
+                            600: '#A67C2E',
+                        },
+                        emerald: {
+                            950: '#051F18',
+                            800: '#0D4A3A',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* تخصيص شريط التمرير */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0F1319;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2C3545;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C89D46;
+        }
+
+        /* إخفاء شريط التمرير للأزرار الأفقية مع إبقاء التمرير */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* زخرفة إسلامية هندسية خفيفة للخلفية */
+        .islamic-pattern {
+            background-image: radial-gradient(rgba(200, 157, 70, 0.08) 1px, transparent 1px),
+                              radial-gradient(rgba(200, 157, 70, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
+        }
+
+        /* تنسيق النص القرآني وموضع الشاهد */
+        .quran-text {
+            font-family: 'Amiri', serif;
+            line-height: 2.2;
+            letter-spacing: 0.01em;
+        }
+        .highlight-rule {
+            color: #E2BE6F;
+            background: rgba(200, 157, 70, 0.16);
+            padding: 0 6px;
+            border-radius: 6px;
+            border-bottom: 2px solid #C89D46;
+            font-weight: 700;
+        }
+        html:not(.dark) .highlight-rule {
+            color: #9A6B16;
+            background: rgba(200, 157, 70, 0.22);
+            border-bottom: 2px solid #9A6B16;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-slate-800 dark:bg-obsidian-950 dark:text-slate-100 font-sans antialiased transition-colors duration-300 selection:bg-gold-500 selection:text-obsidian-950">
+
+    <!-- الشريط العلوي (Navbar) -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-white/85 dark:bg-obsidian-900/85 border-b border-stone-200 dark:border-obsidian-700/80 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- الشعار -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-obsidian-950 shadow-lg shadow-gold-500/20">
+                    <i class="fa-solid fa-book-quran text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+                        <span>مِيزَانُ التِّلَاوَةِ</span>
+                        <span class="hidden sm:inline-block text-xs font-medium px-2 py-0.5 rounded-full bg-gold-500/15 text-gold-600 dark:text-gold-400 border border-gold-500/30">الموسوعة الشاملة</span>
+                    </h1>
+                </div>
+            </div>
+
+            <!-- روابط سريعة وأزرار التحكم -->
+            <div class="flex items-center gap-2 sm:gap-4">
+                <a href="#rules-section" class="hidden md:inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-gold-500 dark:hover:text-gold-400 transition">
+                    <i class="fa-solid fa-layer-group text-xs"></i>
+                    <span>الأبواب العلمية</span>
+                </a>
+                <a href="#quiz-section" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-gold-500/15 text-gold-700 dark:text-gold-300 hover:bg-gold-500 hover:text-obsidian-950 border border-gold-500/30 transition-all">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>اختبر معلوماتك</span>
+                </a>
+                <!-- زر تبديل الوضع الليلي/النهاري -->
+                <button id="themeToggle" aria-label="تبديل المظهر" class="w-10 h-10 rounded-xl flex items-center justify-center bg-stone-100 dark:bg-obsidian-800 text-slate-700 dark:text-gold-400 border border-stone-200 dark:border-obsidian-700 hover:border-gold-500/50 transition">
+                    <i id="themeIcon" class="fa-solid fa-sun text-base"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- الواجهة الرئيسية (Hero Section) -->
+    <section class="relative overflow-hidden islamic-pattern pt-10 pb-12 sm:pt-16 sm:pb-16 border-b border-stone-200 dark:border-obsidian-800">
+        <!-- توهج خلفي هادئ -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gold-500/10 dark:bg-gold-500/5 blur-[100px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-obsidian-800/90 border border-stone-200 dark:border-gold-500/25 shadow-sm mb-6">
+                <span class="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+                <span class="text-xs sm:text-sm font-medium text-slate-600 dark:text-gold-300">﴿وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا﴾</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-4">
+                الدليل التفاعلي الشامل <span class="text-transparent bg-clip-text bg-gradient-to-l from-gold-400 via-gold-500 to-amber-600">لأحكام التجويد</span>
+            </h2>
+            
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8 leading-relaxed">
+                مرجع علمي ميسّر يجمع كافة أبواب علم التجويد برواية حفص عن عاصم، مع الحروف، ومقدار الحركات، والأمثلة القرآنية المشكولة والمُلوّنة، واختبارات تفاعلية لترسيخ الإتقان.
+            </p>
+
+            <!-- شريط البحث الفوري (Live Search) -->
+            <div class="max-w-2xl mx-auto relative group">
+                <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-gold-500 transition">
+                    <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                </div>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="ابحث عن حكم (مثل: الإخفاء، المد اللازم، القلقلة، الراء) أو مثال قرآني..." 
+                    class="w-full pr-12 pl-12 py-4 rounded-2xl bg-white dark:bg-obsidian-800/95 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 border-2 border-stone-200 dark:border-obsidian-700 focus:border-gold-500 dark:focus:border-gold-500 focus:outline-none shadow-xl shadow-slate-900/5 dark:shadow-black/40 text-sm sm:text-base transition-all"
+                >
+                <button id="clearSearch" class="hidden absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400 hover:text-rose-500 transition" title="مسح البحث">
+                    <i class="fa-solid fa-circle-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- إحصائيات سريعة -->
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-book-open text-gold-500"></i>
+                    <span><strong class="text-slate-800 dark:text-slate-200">11</strong> باباً تجويدياً متكاملاً</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-feather-pointed text-gold-500"></i>
+                    <span><strong id="totalRulesCount" class="text-slate-800 dark:text-slate-200">40+</strong> قاعدة وحكماً مفصلاً</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-spell-check text-gold-500"></i>
+                    <span>شواهد قرآنية بتشكيل وتلوين دقيق</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- شريط تصفية الأقسام (Sticky Filter Bar) -->
+    <div id="rules-section" class="sticky top-16 z-30 bg-stone-50/95 dark:bg-obsidian-950/95 backdrop-blur-md border-b border-stone-200 dark:border-obsidian-800 py-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="categoryFilters" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+                <!-- يتم توليد أزرار التصنيف عبر JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- المحتوى الرئيسي: بطاقات أحكام التجويد -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <!-- شريط حالة النتائج -->
+        <div class="flex items-center justify-between mb-6">
+            <h3 id="currentCategoryTitle" class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
+                <span class="w-1.5 h-7 rounded-full bg-gold-500 inline-block"></span>
+                <span>جميع أحكام التجويد</span>
+            </h3>
+            <span id="resultsBadge" class="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-stone-200/70 dark:bg-obsidian-800 text-slate-700 dark:text-slate-300">
+                عرض الكل
+            </span>
+        </div>
+
+        <!-- شبكة البطاقات -->
+        <div id="rulesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- يتم توليد البطاقات ديناميكياً -->
+        </div>
+
+        <!-- رسالة عدم وجود نتائج -->
+        <div id="emptyState" class="hidden text-center py-16 px-4 rounded-3xl bg-white dark:bg-obsidian-900 border border-stone-200 dark:border-obsidian-800">
+            <div class="w-16 h-16 rounded-2xl bg-gold-500/10 text-gold-500 flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-magnifying-glass-minus"></i>
+            </div>
+            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">لم يتم العثور على أحكام مطابقة</h4>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mb-5">جرّب البحث بكلمة أخرى أو تصفح جميع الأبواب التجويدية.</p>
+            <button onclick="resetFilters()" class="px-5 py-2.5 rounded-xl bg-gold-500 text-obsidian-950 font-bold text-sm hover:bg-gold-400 transition">
+                إظهار جميع الأحكام
+            </button>
+        </div>
+    </main>
+
+    <!-- قسم الاختبار التفاعلي (Interactive Quiz Section) -->
+    <section id="quiz-section" class="py-14 bg-stone-100/80 dark:bg-obsidian-900/70 border-t border-stone-200 dark:border-obsidian-800 islamic-pattern">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8">
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-gold-500/15 text-gold-600 dark:text-gold-400 border border-gold-500/30 mb-3">
+                    تطبيق عملي وتقييم ذاتي
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-2">
+                    اختبر معلوماتك في أحكام التجويد
+                </h2>
+                <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+                    أجب عن الأسئلة التالية لقياس مدى إتقانك للقواعد التجويدية والشواهد القرآنية
+                </p>
+            </div>
+
+            <!-- حاوية الاختبار -->
+            <div id="quizContainer" class="bg-white dark:bg-obsidian-800 rounded-3xl p-6 sm:p-8 shadow-xl border border-stone-200 dark:border-obsidian-700">
+                <!-- شريط التقدم والنتيجة -->
+                <div class="flex flex-wrap items-center justify-between gap-4 pb-6 mb-6 border-b border-stone-200 dark:border-obsidian-700">
+                    <div class="flex items-center gap-3">
+                        <span id="quizProgressText" class="text-sm font-bold text-gold-600 dark:text-gold-400">السؤال 1 من 10</span>
+                        <div class="w-32 sm:w-48 h-2.5 bg-stone-200 dark:bg-obsidian-950 rounded-full overflow-hidden">
+                            <div id="quizProgressBar" class="h-full bg-gradient-to-l from-gold-400 to-gold-600 transition-all duration-300" style="width: 10%;"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm font-bold bg-stone-100 dark:bg-obsidian-900 px-3.5 py-1.5 rounded-xl border border-stone-200 dark:border-obsidian-700">
+                        <i class="fa-solid fa-star text-gold-500"></i>
+                        <span>النتيجة: <span id="quizScoreText" class="text-gold-600 dark:text-gold-400">0</span></span>
+                    </div>
+                </div>
+
+                <!-- منطقة السؤال -->
+                <div id="quizQuestionArea">
+                    <div class="mb-6">
+                        <span id="quizCategoryBadge" class="text-xs font-semibold px-2.5 py-1 rounded-md bg-emerald-800/15 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-700/30 mb-3 inline-block">
+                            أحكام النون الساكنة
+                        </span>
+                        <h3 id="quizQuestionText" class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed mt-2">
+                            جاري تحميل السؤال...
+                        </h3>
+                    </div>
+
+                    <!-- الخيارات -->
+                    <div id="quizOptions" class="space-y-3">
+                        <!-- يتم توليد الخيارات عبر JS -->
+                    </div>
+
+                    <!-- صندوق التفسير بعد الإجابة -->
+                    <div id="quizExplanation" class="hidden mt-6 p-4 rounded-2xl bg-stone-100 dark:bg-obsidian-900/90 border-r-4 border-gold-500">
+                        <div class="flex items-start gap-3">
+                            <i id="explanationIcon" class="fa-solid fa-circle-info text-gold-500 mt-1 text-lg"></i>
+                            <div>
+                                <h4 id="explanationTitle" class="font-bold text-sm text-slate-900 dark:text-white mb-1">التوضيح العلمي:</h4>
+                                <p id="explanationBody" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- زر التالي -->
+                    <div class="mt-6 flex justify-end">
+                        <button id="nextQuestionBtn" class="hidden px-6 py-3 rounded-xl bg-gradient-to-l from-gold-500 to-gold-600 text-obsidian-950 font-bold text-sm hover:opacity-95 shadow-lg shadow-gold-500/20 transition flex items-center gap-2">
+                            <span>السؤال التالي</span>
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- شاشة النتيجة النهائية -->
+                <div id="quizResultArea" class="hidden text-center py-6">
+                    <div class="w-20 h-20 rounded-full bg-gold-500/15 text-gold-500 flex items-center justify-center mx-auto mb-4 text-4xl border border-gold-500/30">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">أتممت الاختبار بنجاح!</h3>
+                    <p id="finalScoreMessage" class="text-base text-slate-600 dark:text-slate-300 mb-6"></p>
+                    <div class="inline-flex items-center gap-4 px-6 py-4 rounded-2xl bg-stone-100 dark:bg-obsidian-900 border border-stone-200 dark:border-obsidian-700 mb-8">
+                        <div class="text-center">
+                            <span class="block text-xs text-slate-500 dark:text-slate-400">درجتك النهائية</span>
+                            <span id="finalScoreNumber" class="text-3xl font-extrabold text-gold-500">0 / 10</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button onclick="restartQuiz()" class="px-6 py-3 rounded-xl bg-gold-500 text-obsidian-950 font-bold text-sm hover:bg-gold-400 transition inline-flex items-center gap-2">
+                            <i class="fa-solid fa-rotate-right"></i>
+                            <span>إعادة الاختبار بأسئلة متجددة</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نافذة التفاصيل الموسعة (Modal) عند الضغط على أي بطاقة -->
+    <div id="ruleModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm transition-opacity">
+        <div class="bg-white dark:bg-obsidian-900 border border-stone-200 dark:border-obsidian-700 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 relative animate-fadeIn">
+            <button onclick="closeModal()" class="absolute top-5 left-5 w-9 h-9 rounded-xl bg-stone-100 dark:bg-obsidian-800 text-slate-500 hover:text-rose-500 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <span id="modalCategory" class="text-xs font-bold px-3 py-1 rounded-full bg-gold-500/15 text-gold-600 dark:text-gold-400 border border-gold-500/30"></span>
+            <h3 id="modalTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-3 mb-4"></h3>
+            
+            <div class="space-y-5">
+                <!-- التعريف -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">التعريف والبيان</h4>
+                    <p id="modalDefinition" class="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed"></p>
+                </div>
+
+                <!-- الحروف والمقدار -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-2xl bg-stone-50 dark:bg-obsidian-800/80 border border-stone-200 dark:border-obsidian-700">
+                        <span class="text-xs text-slate-400 block mb-1">الحروف / العلامة</span>
+                        <span id="modalLetters" class="text-base font-bold text-gold-600 dark:text-gold-400"></span>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-stone-50 dark:bg-obsidian-800/80 border border-stone-200 dark:border-obsidian-700">
+                        <span class="text-xs text-slate-400 block mb-1">مقدار الحركة / الغنة / الحكم</span>
+                        <span id="modalDuration" class="text-base font-bold text-emerald-700 dark:text-emerald-400"></span>
+                    </div>
+                </div>
+
+                <!-- الأمثلة القرآنية -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">الشواهد والأمثلة القرآنية</h4>
+                    <div id="modalExamples" class="space-y-2.5">
+                        <!-- يتم توليد الأمثلة -->
+                    </div>
+                </div>
+
+                <!-- ملاحظة فنية -->
+                <div id="modalNoteBox" class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/25 text-sm text-slate-700 dark:text-amber-200/90 flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-gold-500 mt-0.5"></i>
+                    <p id="modalNote"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- التذييل (Footer) -->
+    <footer class="bg-white dark:bg-obsidian-950 border-t border-stone-200 dark:border-obsidian-800 py-8 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-center gap-2 text-gold-500 mb-2">
+                <i class="fa-solid fa-book-quran"></i>
+                <span class="font-bold text-slate-900 dark:text-white">موسوعة ميزان التلاوة لأحكام التجويد</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                مادة علمية ميسّرة وفق رواية حفص عن عاصم من طريق الشاطبية — نسأل الله أن ينفع بها كل قارئ ومُتعلّم لكتاب الله.
+            </p>
+        </div>
+    </footer>
+
+    <!-- قاعدة البيانات والمنطق البرمجي -->
+    <script>
+        // ==========================================
+        // 1. الأقسام العلمية (Categories)
+        // ==========================================
+        const categories = [
+            { id: 'all', name: 'جميع الأبواب', icon: 'fa-border-all' },
+            { id: 'istiadha', name: 'الاستعاذة والبسملة', icon: 'fa- hands-praying' },
+            { id: 'noon', name: 'النون الساكنة والتنوين', icon: 'fa-font' },
+            { id: 'meem', name: 'الميم الساكنة والمشددتان', icon: 'fa-circle-dot' },
+            { id: 'lamat', name: 'أحكام اللامات السواكن', icon: 'fa-align-right' },
+            { id: 'qalqalah', name: 'القلقلة', icon: 'fa-wave-square' },
+            { id: 'tafkheem', name: 'التفخيم والترقيق', icon: 'fa-volume-high' },
+            { id: 'mad', name: 'أحكام المدود', icon: 'fa-arrows-left-right' },
+            { id: 'relations', name: 'علاقات الحروف', icon: 'fa-link' },
+            { id: 'makharij', name: 'المخارج والصفات', icon: 'fa-microphone-lines' },
+            { id: 'waqf', name: 'الوقف والابتداء', icon: 'fa-hand' }
+        ];
+
+        // ==========================================
+        // 2. موسوعة أحكام التجويد الشاملة
+        // ==========================================
+        const tajweedRules = [
+            // --- 1. الاستعاذة والبسملة ---
+            {
+                id: 'istiadha-cases',
+                category: 'istiadha',
+                categoryName: 'الاستعاذة والبسملة',
+                title: 'أوجه الاستعاذة مع البسملة وأول السورة',
+                definition: 'الاستعاذة مستحبة عند إرادة القراءة لقوله تعالى: ﴿فَإِذَا قَرَأْتَ الْقُرْآنَ فَاسْتَعِذْ بِاللَّهِ﴾، ولها عند الجمع بينها وبين البسملة وأول السورة أربعة أوجه جائزة.',
+                letters: 'أعوذ بالله من الشيطان الرجيم',
+                duration: '4 أوجه جائزة (عدا براءة)',
+                examples: [
+                    { text: '1. قطع الجميع: الوقف على الاستعاذة، ثم الوقف على البسملة، ثم البدء بأول السورة.', surah: 'الأوجه الجائزة' },
+                    { text: '2. وصل الجميع: وصل الاستعاذة بالبسملة بأول السورة في نفس واحد.', surah: 'الأوجه الجائزة' },
+                    { text: '3. قطع الأول ووصل الثاني بالثالث / 4. وصل الأول بالثاني وقطع الثالث.', surah: 'الأوجه الجائزة' }
+                ],
+                note: 'في سورة التوبة (براءة) لا بسملة في أولها، فيجوز فيها وجهان: الوقف على الاستعاذة أو وصلها بأول السورة.'
+            },
+            {
+                id: 'basmalah-between',
+                category: 'istiadha',
+                categoryName: 'الاستعاذة والبسملة',
+                title: 'أوجه البسملة بين السورتين',
+                definition: 'عند الانتهاء من سورة والبدء بالسورة التي تليها، يجوز للقارئ ثلاثة أوجه صحيحة، ويمتنع وجه واحد فقط منعاً لتوهم أن البسملة آخر السورة السابقة.',
+                letters: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
+                duration: '3 أوجه جائزة ووجه ممتنع',
+                examples: [
+                    { text: 'قطع الجميع: ﴿وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ﴾ (وقف) ﴿بِسْمِ اللَّهِ...﴾ (وقف) ﴿قُلْ أَعُوذُ بِرَبِّ النَّاسِ﴾', surah: 'الجائز الأول' },
+                    { text: 'قطع الأول ووصل الثاني بالثالث، أو وصل الجميع.', surah: 'الجائز الثاني والثالث' }
+                ],
+                note: 'الوجه الممتنع: وصل آخر السورة بالبسملة ثم الوقف عليها! لأنه يوهم أن البسملة آية من السورة المنتهية.'
+            },
+
+            // --- 2. النون الساكنة والتنوين ---
+            {
+                id: 'izhar-halqi',
+                category: 'noon',
+                categoryName: 'النون الساكنة والتنوين',
+                title: 'الإظهار الحلقي',
+                definition: 'إخراج النون الساكنة أو التنوين من مخرجهما بغير غنة زائدة ولا سكت ولا تشديد إذا جاء بعدهما أحد حروف الحلق الستة.',
+                letters: 'ء ، هـ ، ع ، ح ، غ ، خ',
+                duration: 'نطق واضح بلا غنة مطوّلة',
+                examples: [
+                    { text: '﴿مَ<span class="highlight-rule">نْ آ</span>مَنَ﴾ — ﴿يَ<span class="highlight-rule">نْهَ</span>وْنَ﴾', surah: 'نون ساكنة' },
+                    { text: '﴿سَمِيعٌ <span class="highlight-rule">عَ</span>لِيمٌ﴾ — ﴿عَلِيمٌ <span class="highlight-rule">حَ</span>كِيمٌ﴾', surah: 'تنوين' },
+                    { text: '﴿مِ<span class="highlight-rule">نْ غِ</span>لٍّ﴾ — ﴿يَوْمَئِذٍ <span class="highlight-rule">خَ</span>اشِعَةٌ﴾', surah: 'الغين والخاء' }
+                ],
+                note: 'علامته في ضبط المصحف: وضع رأس خاء صغيرة (نْ) فوق النون، وتراكب الحركتين (ـًـ ـٍـ ـٌـ) في التنوين.'
+            },
+            {
+                id: 'idgham-ghunnah',
+                category: 'noon',
+                categoryName: 'النون الساكنة والتنوين',
+                title: 'الإدغام بغنة',
+                definition: 'إدخال النون الساكنة أو التنوين في الحرف المتحرك الذي يليهما بحيث يصيران حرفاً واحداً مشدداً، مع بقاء الغنة الظاهرة.',
+                letters: 'ي ، ن ، م ، و (مجموعة في: يَنْمُو)',
+                duration: 'غنة بمقدار حركتين',
+                examples: [
+                    { text: '﴿فَمَ<span class="highlight-rule">ن يَ</span>عْمَلْ﴾ — ﴿بَرْقٌ <span class="highlight-rule">يَ</span>جْعَلُونَ﴾', surah: 'حرف الياء' },
+                    { text: '﴿مِ<span class="highlight-rule">ن نِّ</span>عْمَةٍ﴾ — ﴿مِ<span class="highlight-rule">ن مَّ</span>اءٍ﴾ — ﴿مِ<span class="highlight-rule">ن وَ</span>الٍ﴾', surah: 'النون والميم والواو' }
+                ],
+                note: 'يشترط في الإدغام أن يكون في كلمتين؛ فإن اجتمعا في كلمة واحدة وجب الإظهار المطلق في أربع كلمات بالقرآن: (الدُّنْيَا، بُنْيَانٌ، قِنْوَانٌ، صِنْوَانٌ).'
+            },
+            {
+                id: 'idgham-no-ghunnah',
+                category: 'noon',
+                categoryName: 'النون الساكنة والتنوين',
+                title: 'الإدغام بغير غنة',
+                definition: 'إدخال النون الساكنة أو التنوين في اللام أو الراء إدغاماً كاملاً مع ذهاب ذات النون وصفتها (الغنة) تماماً.',
+                letters: 'ل ، ر',
+                duration: 'إدغام كامل بلا غنة',
+                examples: [
+                    { text: '﴿مِ<span class="highlight-rule">ن لَّ</span>دُنْهُ﴾ — ﴿هُدًى <span class="highlight-rule">لِّ</span>لْمُتَّقِينَ﴾', surah: 'حرف اللام' },
+                    { text: '﴿مِ<span class="highlight-rule">ن رَّ</span>بِّهِمْ﴾ — ﴿غَفُورٌ <span class="highlight-rule">رَّ</span>حِيمٌ﴾', surah: 'حرف الراء' }
+                ],
+                note: 'يستثنى لحفص موضع ﴿مَنْ رَاقٍ﴾ بسورة القيامة بسبب السكت اللطيف على النون، والسكت يمنع الإدغام.'
+            },
+            {
+                id: 'iqlab',
+                category: 'noon',
+                categoryName: 'النون الساكنة والتنوين',
+                title: 'الإقلاب (القلب)',
+                definition: 'قلب النون الساكنة أو التنوين ميماً مخفاة عند الباء مع مراعاة الغنة وعدم كزّ الشفتين بقوة.',
+                letters: 'ب (حرف الباء فقط)',
+                duration: 'غنة بمقدار حركتين',
+                examples: [
+                    { text: '﴿مِ<span class="highlight-rule">ن بَ</span>عْدِ﴾ — ﴿أَ<span class="highlight-rule">نبِ</span>ئْهُمْ﴾', surah: 'نون ساكنة' },
+                    { text: '﴿سَمِيعٌ <span class="highlight-rule">بَ</span>صِيرٌ﴾ — ﴿عَلِيمٌ <span class="highlight-rule">بِ</span>ذَاتِ الصُّدُورِ﴾', surah: 'تنوين' }
+                ],
+                note: 'علامته في المصحف وضع ميم صغيرة قائمة (مـ) فوق النون أو بدل الحركة الثانية للتنوين.'
+            },
+            {
+                id: 'ikhfa-haqiqi',
+                category: 'noon',
+                categoryName: 'النون الساكنة والتنوين',
+                title: 'الإخفاء الحقيقي',
+                definition: 'النطق بالنون الساكنة أو التنوين بصفة بين الإظهار والإدغام، عارياً عن التشديد، مع بقاء الغنة وتهيئة الفم على مخرج الحرف التالي.',
+                letters: '15 حرفاً: ص ذ ث ك ج ش ق س د ط ز ف ت ض ظ',
+                duration: 'غنة بمقدار حركتين',
+                examples: [
+                    { text: '﴿مِ<span class="highlight-rule">ن صَ</span>لْصَالٍ﴾ — ﴿ا<span class="highlight-rule">نصُ</span>رْنَا﴾', surah: 'غنة مفخمة' },
+                    { text: '﴿ا<span class="highlight-rule">لْإِنسَ</span>انَ﴾ — ﴿مِ<span class="highlight-rule">ن تَ</span>حْتِهَا﴾ — ﴿شَيْءٍ <span class="highlight-rule">قَ</span>دِيرٌ﴾', surah: 'أمثلة متنوعة' }
+                ],
+                note: 'تُفخّم غنة الإخفاء إذا جاء بعدها حرف استعلاء (ص، ض، ط، ظ، ق)، وتُرقّق إذا جاء بعدها حرف مستفل.'
+            },
+
+            // --- 3. الميم الساكنة والنون والميم المشددتان ---
+            {
+                id: 'ikhfa-shafawi',
+                category: 'meem',
+                categoryName: 'الميم الساكنة والمشددتان',
+                title: 'الإخفاء الشفوي',
+                definition: 'إخفاء الميم الساكنة عند ملاقاتها لحرف الباء في كلمتين، مع بقاء الغنة وتلامس الشفتين برفق دون كزّ.',
+                letters: 'ب (بعد الميم الساكنة)',
+                duration: 'غنة بمقدار حركتين',
+                examples: [
+                    { text: '﴿تَرْمِيهِ<span class="highlight-rule">م بِ</span>حِجَارَةٍ﴾', surah: 'سورة الفيل' },
+                    { text: '﴿وَمَا هُ<span class="highlight-rule">م بِ</span>مُؤْمِنِينَ﴾ — ﴿يَعْتَصِ<span class="highlight-rule">م بِ</span>اللَّهِ﴾', surah: 'شواهد قرآنية' }
+                ],
+                note: 'سُمّي شفوياً لخروج الميم والباء من الشفتين.'
+            },
+            {
+                id: 'idgham-shafawi',
+                category: 'meem',
+                categoryName: 'الميم الساكنة والمشددتان',
+                title: 'الإدغام الشفوي (إدغام المتماثلين الصغير)',
+                definition: 'إدغام الميم الساكنة في ميم متحركة مثلها تليها مباشرة، بحيث يصيران ميماً واحدة مشددة مع غنة كاملة.',
+                letters: 'م (ميم متحركة بعد ميم ساكنة)',
+                duration: 'غنة بمقدار حركتين',
+                examples: [
+                    { text: '﴿لَهُ<span class="highlight-rule">م مَّ</span>ا يَشَاءُونَ﴾', surah: 'سورة النحل' },
+                    { text: '﴿أَطْعَمَهُ<span class="highlight-rule">م مِّ</span>ن جُوعٍ وَآمَنَهُ<span class="highlight-rule">م مِّ</span>نْ خَوْفٍ﴾', surah: 'سورة قريش' }
+                ],
+                note: 'تُعرّى الميم الأولى من السكون وتُشدد الميم الثانية في رسم المصحف.'
+            },
+            {
+                id: 'izhar-shafawi',
+                category: 'meem',
+                categoryName: 'الميم الساكنة والمشددتان',
+                title: 'الإظهار الشفوي',
+                definition: 'إظهار الميم الساكنة بوضوح وبغير غنة زائدة إذا جاء بعدها أي حرف من حروف الهجاء ما عدا الباء والميم.',
+                letters: 'باقي الحروف (26 حرفاً عدا الباء والميم)',
+                duration: 'إظهار تام بلا غنة مطوّلة',
+                examples: [
+                    { text: '﴿أَنْعَمْتَ عَلَيْهِ<span class="highlight-rule">مْ غَ</span>يْرِ الْمَغْضُوبِ عَلَيْهِ<span class="highlight-rule">مْ وَلَ</span>ا الضَّالِّينَ﴾', surah: 'سورة الفاتحة' },
+                    { text: '﴿هُ<span class="highlight-rule">مْ فِ</span>يهَا خَالِدُونَ﴾', surah: 'سورة البقرة' }
+                ],
+                note: 'يشتد الحذر من إخفاء الميم عند الواو والفاء لاتحاد المخرج مع الواو وقربه مع الفاء: ﴿عَلَيْهِمْ وَلَا﴾، ﴿هُمْ فِيهَا﴾.'
+            },
+            {
+                id: 'mushaddad',
+                category: 'meem',
+                categoryName: 'الميم الساكنة والمشددتان',
+                title: 'حكم النون والميم المشددتين',
+                definition: 'كل نون مشددة أو ميم مشددة (سواء في وسط الكلمة أو آخرها، في اسم أو فعل أو حرف) يجب إظهار الغنة فيهما بأكمل مراتبها.',
+                letters: 'نّ ، مّ',
+                duration: 'غنة أكمل ما تكون (حركتان)',
+                examples: [
+                    { text: '﴿إِ<span class="highlight-rule">نَّ</span> اللَّهَ﴾ — ﴿مِنَ الْجِ<span class="highlight-rule">نَّ</span>ةِ وَال<span class="highlight-rule">نَّ</span>اسِ﴾', surah: 'النون المشددة' },
+                    { text: '﴿ثُ<span class="highlight-rule">مَّ</span>﴾ — ﴿عَ<span class="highlight-rule">مَّ</span> يَتَسَاءَلُونَ﴾ — ﴿أُ<span class="highlight-rule">مَّ</span>ةً﴾', surah: 'الميم المشددة' }
+                ],
+                note: 'يُطلق على كل منهما: حرف غنة مشدد.'
+            },
+
+            // --- 4. أحكام اللامات السواكن ---
+            {
+                id: 'lam-qamariyah-shamsiyah',
+                category: 'lamat',
+                categoryName: 'أحكام اللامات السواكن',
+                title: 'لام (أل) التعريف: القمرية والشمسية',
+                definition: 'لام زائدة تدخل على الأسماء النكرة لتعريفها؛ فتُظهر (قمرية) قبل 14 حرفاً، وتُدغم (شمسية) في 14 حرفاً.',
+                letters: 'القمرية: ابغ حجك وخف عقيمه | الشمسية: باقي الحروف',
+                duration: 'إظهار للقمرية / إدغام للشمسية',
+                examples: [
+                    { text: 'القمرية: ﴿ا<span class="highlight-rule">لْ</span>قَمَرُ﴾ — ﴿ا<span class="highlight-rule">لْ</span>حَمْدُ﴾ — ﴿ا<span class="highlight-rule">لْ</span>غَفُورُ﴾', surah: 'إظهار اللام' },
+                    { text: 'الشمسية: ﴿ا<span class="highlight-rule">لشَّ</span>مْسُ﴾ — ﴿ا<span class="highlight-rule">لرَّ</span>حْمَٰنُ﴾ — ﴿ا<span class="highlight-rule">لضَّ</span>الِّينَ﴾', surah: 'إدغام اللام' }
+                ],
+                note: 'تُدغم اللام الشمسية في النون فتنتج نوناً مشددة ذات غنة بمقدار حركتين مثل: ﴿النَّاسِ﴾.'
+            },
+            {
+                id: 'lam-other',
+                category: 'lamat',
+                categoryName: 'أحكام اللامات السواكن',
+                title: 'لام الفعل، ولام الاسم، ولام الحرف، ولام الأمر',
+                definition: 'أحكام اللامات الساكنة في غير (أل) التعريف بين الإظهار الأصلي والإدغام عند اللام والراء.',
+                letters: 'اللام الساكنة في الأفعال والأسماء والحروف',
+                duration: 'الإظهار (إلا قبل ل، ر فتُدغم)',
+                examples: [
+                    { text: 'لام الفعل: ﴿قُ<span class="highlight-rule">لْ</span> نَعَمْ﴾ (إظهار) — ﴿قُ<span class="highlight-rule">ل لَّ</span>كُمْ﴾، ﴿قُ<span class="highlight-rule">ل رَّ</span>بِّ﴾ (إدغام)', surah: 'الفعل' },
+                    { text: 'لام الاسم: ﴿سُ<span class="highlight-rule">لْ</span>طَانٍ﴾، ﴿أَ<span class="highlight-rule">لْ</span>وَانِكُمْ﴾ (حكمها الإظهار دائماً)', surah: 'الاسم' },
+                    { text: 'لام الحرف (هل، بل): ﴿هَ<span class="highlight-rule">لْ</span> أَتَىٰ﴾ (إظهار) — ﴿بَ<span class="highlight-rule">ل رَّ</span>فَعَهُ﴾ (إدغام)', surah: 'الحرف' },
+                    { text: 'لام الأمر: ﴿ثُمَّ <span class="highlight-rule">لْ</span>يَقْضُوا﴾ — ﴿فَ<span class="highlight-rule">لْ</span>يَعْبُدُوا﴾ (إظهار)', surah: 'الأمر' }
+                ],
+                note: 'يستثنى لحفص ﴿بَلْ رَانَ﴾ بسورة المطففين؛ فلا إدغام فيها بسبب وجوب السكت.'
+            },
+
+            // --- 5. القلقلة ---
+            {
+                id: 'qalqalah-levels',
+                category: 'qalqalah',
+                categoryName: 'القلقلة',
+                title: 'حروف القلقلة ومراتبها الثلاث',
+                definition: 'اضطراب الصوت في مخرج الحرف الساكن حتى يُسمع له نبرة قوية، وتحدث عند سكون أحد حروف (قطب جد) سكوناً أصلياً أو عارضاً.',
+                letters: 'ق ، ط ، ب ، ج ، د (قُطْبُ جَدٍّ)',
+                duration: '3 مراتب: صغرى، كبرى، أكبر',
+                examples: [
+                    { text: '1. قلقلة صغرى (ساكن وسط الكلمة أو الكلام): ﴿يَ<span class="highlight-rule">قْ</span>طَعُونَ﴾ — ﴿يَ<span class="highlight-rule">دْ</span>خُلُونَ﴾', surah: 'المرتبة الصغرى' },
+                    { text: '2. قلقلة كبرى (موقوف عليه مخفف): ﴿الْفَلَ<span class="highlight-rule">قْ</span>﴾ — ﴿مُحِي<span class="highlight-rule">طْ</span>﴾ — ﴿أَحَ<span class="highlight-rule">دْ</span>﴾', surah: 'المرتبة الكبرى' },
+                    { text: '3. قلقلة أكبر (موقوف عليه مشدد): ﴿الْحَ<span class="highlight-rule">قُّ</span>﴾ — ﴿وَتَ<span class="highlight-rule">بَّ</span>﴾ — ﴿الْحَ<span class="highlight-rule">جُّ</span>﴾', surah: 'المرتبة الأكبر' }
+                ],
+                note: 'القلقلة صفة ملازمة للحرف الساكن لا تميل إلى الفتح ولا الكسر ولا الضم، بل تخرج متجردة.'
+            },
+
+            // --- 6. التفخيم والترقيق ---
+            {
+                id: 'istila-letters',
+                category: 'tafkheem',
+                categoryName: 'التفخيم والترقيق',
+                title: 'حروف الاستعلاء (التفخيم الدائم)',
+                definition: 'التفخيم هو سِمَن يعتري الحرف فيمتلئ الفم بصداه، ويكون دائماً في حروف الاستعلاء السبعة، وأقواها حروف الإطباق الأربعة (ص، ض، ط، ظ).',
+                letters: 'خ ، ص ، ض ، غ ، ط ، ق ، ظ (خُصَّ ضَغْطٍ قِظْ)',
+                duration: 'مفخمة دائماً (بدرجات متفاوتة)',
+                examples: [
+                    { text: '﴿<span class="highlight-rule">خَ</span>الِدِينَ﴾ — ﴿ال<span class="highlight-rule">صَّ</span>ابِرِينَ﴾ — ﴿وَلَا ال<span class="highlight-rule">ضَّ</span>الِّينَ﴾', surah: 'أعلى المراتب' },
+                    { text: '﴿ال<span class="highlight-rule">طَّ</span>امَّةُ﴾ — ﴿الْ<span class="highlight-rule">قَ</span>ارِعَةُ﴾ — ﴿<span class="highlight-rule">ظَ</span>لَمُوا﴾ — ﴿<span class="highlight-rule">غَ</span>افِرِ﴾', surah: 'حروف الاستعلاء' }
+                ],
+                note: 'مراتب التفخيم خمس: المفتوح بعده ألف، المفتوح، المضموم، الساكن، المكسور.'
+            },
+            {
+                id: 'alif-lam-allah',
+                category: 'tafkheem',
+                categoryName: 'التفخيم والترقيق',
+                title: 'تفخيم وترقيق الألف ولام لفظ الجلالة',
+                definition: 'الألف المدية ولام لفظ الجلالة (الله / اللهم) يتبعان ما قبلهما تفخيماً وترقيقاً.',
+                letters: 'الألف المدية ، لام لفظ الجلالة (اللَّه)',
+                duration: 'تابعة لما قبلها',
+                examples: [
+                    { text: 'الألف: تفخم بعد المفخم ﴿قَ<span class="highlight-rule">ا</span>لَ﴾، وترقق بعد المرقق ﴿كَ<span class="highlight-rule">ا</span>نَ﴾', surah: 'الألف المدية' },
+                    { text: 'لفظ الجلالة (تفخيم بعد فتح أو ضم): ﴿قَالَ <span class="highlight-rule">اللَّهُ</span>﴾ — ﴿عَبْدُ <span class="highlight-rule">اللَّهِ</span>﴾', surah: 'تفخيم اللام' },
+                    { text: 'لفظ الجلالة (ترقيق بعد كسر): ﴿بِسْمِ <span class="highlight-rule">اللَّهِ</span>﴾ — ﴿قُلِ <span class="highlight-rule">اللَّهُمَّ</span>﴾', surah: 'ترقيق اللام' }
+                ],
+                note: 'جميع الحروف الهجائية عدا حروف الاستعلاء والألف ولام لفظ الجلالة والراء هي حروف مرققة دائماً.'
+            },
+            {
+                id: 'ra-rules',
+                category: 'tafkheem',
+                categoryName: 'التفخيم والترقيق',
+                title: 'أحكام الراء (التفخيم والترقيق)',
+                definition: 'تُفخّم الراء إذا كانت مفتوحة أو مضمومة أو ساكنة بعد فتح أو ضم، وتُرقّق إذا كانت مكسورة أو ساكنة بعد كسر أصلي أو ياء ساكنة.',
+                letters: 'حرف الراء (ر)',
+                duration: 'تفخم تارة وترقق تارة',
+                examples: [
+                    { text: 'تفخيم الراء: ﴿<span class="highlight-rule">رَ</span>بِّنَا﴾ — ﴿<span class="highlight-rule">رُ</span>زِقْنَا﴾ — ﴿الْقُ<span class="highlight-rule">رْ</span>آنُ﴾ — ﴿ا<span class="highlight-rule">رْ</span>جِعِي﴾', surah: 'حالات التفخيم' },
+                    { text: 'ترقيق الراء: ﴿<span class="highlight-rule">رِ</span>زْقًا﴾ — ﴿فِ<span class="highlight-rule">رْ</span>عَوْنَ﴾ — ﴿قَدِي<span class="highlight-rule">رٌ</span>﴾ (وقفاً)', surah: 'حالات الترقيق' }
+                ],
+                note: 'تُفخم الراء الساكنة بعد كسر إذا جاء بعدها حرف استعلاء غير مكسور في نفس الكلمة مثل: ﴿مِرْصَادًا﴾، ﴿قِرْطَاسٍ﴾.'
+            },
+
+            // --- 7. أحكام المدود ---
+            {
+                id: 'mad-tabii',
+                category: 'mad',
+                categoryName: 'أحكام المدود',
+                title: 'المد الطبيعي (الأصلي) وملحقاته',
+                definition: 'هو المد الذي لا تقوم ذات الحرف إلا به ولا يتوقف على سبب من همز أو سكون، ويلحق به: مد البدل، ومد العوض، ومد الصلة الصغرى.',
+                letters: 'ا (بعد فتح) ، و (بعد ضم) ، ي (بعد كسر)',
+                duration: 'حركتان وجوباً',
+                examples: [
+                    { text: 'الطبيعي: ﴿قَ<span class="highlight-rule">ا</span>لَ﴾ — ﴿يَقُ<span class="highlight-rule">و</span>لُ﴾ — ﴿قِ<span class="highlight-rule">ي</span>لَ﴾', surah: 'المد الأصلي' },
+                    { text: 'البدل (تقدم الهمز): ﴿<span class="highlight-rule">آمَ</span>نُوا﴾ — ﴿<span class="highlight-rule">أُوتُ</span>وا﴾ — ﴿<span class="highlight-rule">إِيمَ</span>انًا﴾', surah: 'ملحق بالطبيعي' },
+                    { text: 'العوض (الوقف على تنوين النصب): ﴿عَلِيمً<span class="highlight-rule">ا</span>﴾ — ﴿حَكِيمً<span class="highlight-rule">ا</span>﴾', surah: 'ملحق بالطبيعي' },
+                    { text: 'الصلة الصغرى (هاء الضمير بين متحركين): ﴿إِنَّ<span class="highlight-rule">هُۥ</span> كَانَ﴾', surah: 'ملحق بالطبيعي' }
+                ],
+                note: 'تُستثنى التاء المربوطة المنونة بالفتح عند الوقف عليها فتُبدل هاءً ساكنة بلا مد عوض، مثل: ﴿رَحْمَةً﴾ ← (رَحْمَهْ).'
+            },
+            {
+                id: 'mad-muttasil',
+                category: 'mad',
+                categoryName: 'أحكام المدود',
+                title: 'المد الواجب المتصل',
+                definition: 'أن يأتي حرف المد وبعده همزة في نفس الكلمة، وسُمّي واجباً لوجوب مده عند جميع القراء أكثر من الطبيعي.',
+                letters: 'حرف مد + همزة في كلمة واحدة',
+                duration: '4 أو 5 حركات (و 6 عند التطرف وقفاً)',
+                examples: [
+                    { text: '﴿إِذَا جَ<span class="highlight-rule">اءَ</span>﴾ — ﴿السَّمَ<span class="highlight-rule">اءِ</span>﴾', surah: 'الألف' },
+                    { text: '﴿سُ<span class="highlight-rule">وءَ</span>﴾ — ﴿سِ<span class="highlight-rule">يئَ</span>تْ﴾ — ﴿الْمَلَ<span class="highlight-rule">ائِ</span>كَةُ﴾', surah: 'الواو والياء' }
+                ],
+                note: 'يُمد من طريق الشاطبية لحفص بمقدار 4 أو 5 حركات وصلاً، ويجوز 6 حركات إذا كانت الهمزة متطرفة وموقوفاً عليها.'
+            },
+            {
+                id: 'mad-munfasil',
+                category: 'mad',
+                categoryName: 'أحكام المدود',
+                title: 'المد الجائز المنفصل والصلة الكبرى',
+                definition: 'أن يأتي حرف المد في آخر الكلمة الأولى والهمزة في أول الكلمة الثانية. ويلحق به مد الصلة الكبرى إذا جاء بعد هاء الضمير همزة.',
+                letters: 'حرف مد في آخر كلمة + همزة في أول التالية',
+                duration: '4 أو 5 حركات (من الشاطبية)',
+                examples: [
+                    { text: 'المنفصل: ﴿بِمَ<span class="highlight-rule">ا أُ</span>نزِلَ﴾ — ﴿قُ<span class="highlight-rule">وا أَ</span>نفُسَكُمْ﴾ — ﴿فِ<span class="highlight-rule">ي أَ</span>نفسِهِمْ﴾', surah: 'مد منفصل' },
+                    { text: 'الصلة الكبرى: ﴿مَالُ<span class="highlight-rule">هُۥ أَ</span>خْلَدَهُ﴾ — ﴿عِندَ<span class="highlight-rule">هُۥ إِلَّ</span>ا﴾', surah: 'صلة كبرى' }
+                ],
+                note: 'كلمات مثل ﴿يَا أَيُّهَا﴾ و ﴿هَؤُلَاءِ﴾ هي من المد المنفصل حكماً لأن (يا) و (ها) كلمتان منفصلتان عن الاسم بعدهما رغم اتصالهما رسماً.'
+            },
+            {
+                id: 'mad-arid-leen',
+                category: 'mad',
+                categoryName: 'أحكام المدود',
+                title: 'المد العارض للسكون ومد اللين',
+                definition: 'العارض للسكون: أن يأتي بعد حرف المد حرف ساكن سكوناً عارضاً بسبب الوقف. ومد اللين: أن يأتي السكون العارض بعد واو أو ياء ساكنتين مفتوح ما قبلهما.',
+                letters: 'حرف مد أو لين + سكون عارض للوقف',
+                duration: '2 أو 4 أو 6 حركات (جائز)',
+                examples: [
+                    { text: 'العارض للسكون: ﴿الْعَالَمِ<span class="highlight-rule">ينَ</span>﴾ — ﴿نَسْتَعِ<span class="highlight-rule">ينُ</span>﴾ — ﴿يَعْلَمُ<span class="highlight-rule">ونَ</span>﴾', surah: 'سورة الفاتحة' },
+                    { text: 'مد اللين: ﴿قُرَ<span class="highlight-rule">يْشٍ</span>﴾ — ﴿الْبَ<span class="highlight-rule">يْتِ</span>﴾ — ﴿خَ<span class="highlight-rule">وْفٍ</span>﴾', surah: 'سورة قريش' }
+                ],
+                note: 'عند الوصل يزول السكون العارض فيرجع العارض للسكون مداً طبيعياً (حركتين)، ويزول المد تماماً في حرف اللين.'
+            },
+            {
+                id: 'mad-lazim',
+                category: 'mad',
+                categoryName: 'أحكام المدود',
+                title: 'المد اللازم (الكلمي والحرفي)',
+                definition: 'أن يأتي بعد حرف المد سكون أصلي ثابت وصلاً ووقفاً، في كلمة أو في حرف من الحروف المقطعة أوائل السور.',
+                letters: 'حرف مد + سكون أصلي (مشدد أو مخفف)',
+                duration: '6 حركات لزوماً (الإشباع)',
+                examples: [
+                    { text: 'كلمى مثقل (بعده مشدد): ﴿الضَّ<span class="highlight-rule">الِّ</span>ينَ﴾ — ﴿الْحَ<span class="highlight-rule">اقَّ</span>ةُ﴾ — ﴿أَتُحَ<span class="highlight-rule">اجُّ</span>ونِّي﴾', surah: '6 حركات' },
+                    { text: 'كلمي مخفف (بعده ساكن غير مشدد): ﴿<span class="highlight-rule">آلْ</span>آنَ﴾ (في موضعي يونس فقط)', surah: '6 حركات' },
+                    { text: 'حرفي مثقل ومخفف (نقص عسلكم): ﴿<span class="highlight-rule">الم</span>﴾ — ﴿<span class="highlight-rule">يس</span>﴾ — ﴿<span class="highlight-rule">ق</span>﴾ — ﴿<span class="highlight-rule">ن</span>﴾', surah: 'أوائل السور' }
+                ],
+                note: 'الحروف المقطعة في أوائل السور (14 حرفاً: صله سحيراً من قطعك) تنقسم إلى: (نقص عسلكم) وتمد 6 حركات، و(حي طهر) وتمد حركتين، و(الألف) لا مد فيه.'
+            },
+
+            // --- 8. علاقات الحروف ---
+            {
+                id: 'letter-relations',
+                category: 'relations',
+                categoryName: 'علاقات الحروف',
+                title: 'المتماثلان، المتقاربان، المتجانسان، المتباعدان',
+                definition: 'العلاقة بين كل حرفين التقيا خطاً ولفظاً بحسب اتحادهما أو تقاربهما أو تباعدهما في المخرج والصفة.',
+                letters: 'التقاء حرفين متتاليين (صغير / كبير / مطلق)',
+                duration: 'الإدغام في المتماثلين الصغير وبعض المتجانسين والمتقاربين',
+                examples: [
+                    { text: 'المتماثلان (اتحدا مخرجاً وصفة): ﴿اضْرِ<span class="highlight-rule">ب بِّ</span>عَصَاكَ﴾ — ﴿قَ<span class="highlight-rule">د دَّ</span>خَلُوا﴾', surah: 'إدغام واجب' },
+                    { text: 'المتجانسان (اتحدا مخرجاً واختلفا صفة): ﴿قَ<span class="highlight-rule">د تَّ</span>بَيَّنَ﴾ — ﴿ارْكَ<span class="highlight-rule">ب مَّ</span>عَنَا﴾', surah: 'إدغام متجانسين' },
+                    { text: 'المتقاربان (تقاربا مخرجاً وصفة): ﴿أَلَمْ نَخْلُ<span class="highlight-rule">قكُّ</span>مْ﴾ — ﴿قُ<span class="highlight-rule">ل رَّ</span>بِّ﴾', surah: 'إدغام متقاربين' }
+                ],
+                note: 'يُمتنع إدغام المتماثلين إذا كان الأول حرف مد مثل: ﴿فِي يَوْمٍ﴾، ﴿قَالُوا وَهُمْ﴾ لكي لا يذهب المد.'
+            },
+
+            // --- 9. المخارج والصفات ---
+            {
+                id: 'makharij-five',
+                category: 'makharij',
+                categoryName: 'المخارج والصفات',
+                title: 'مخارج الحروف الخمسة العامة',
+                definition: 'المخرج هو محل خروج الحرف وتمييزه عن غيره، وتنحصر مخارج الحروف السبعة عشر الخاصة في خمسة مخارج عامة رئيسية.',
+                letters: 'الجوف ، الحلق ، اللسان ، الشفتان ، الخيشوم',
+                duration: '5 مخارج عامة تضم 17 مخرجاً خاصاً',
+                examples: [
+                    { text: '1. الجوف (الخلاء داخل الحلق والفم): تخرج منه حروف المد الثلاثة (ا، و، ي).', surah: 'مخرج مقدر' },
+                    { text: '2. الحلق: (أقصاه: ء هـ)، (وسطه: ع ح)، (أدناه: غ خ).', surah: '3 مخارج خاصة' },
+                    { text: '3. اللسان: يضم 10 مخارج تخرج منها 18 حرفاً (ق، ك، ج، ش، ي، ض، ل، ن، ر، ط، د، ت، ص، س، ز، ظ، ذ، ث).', surah: 'أكثر المخارج' },
+                    { text: '4. الشفتان: (ف، و، ب، م) | 5. الخيشوم: مخرج الغنة.', surah: 'الشفتان والخيشوم' }
+                ],
+                note: 'لمعرفة مخرج أي حرف: سكّنه أو شدّده وأدخل عليه همزة وصل محركة، فحيث انقطع الصوت فهو مخرجه (مثل: أَبْ، أَمْ، أَقْ).'
+            },
+            {
+                id: 'sifaat-letters',
+                category: 'makharij',
+                categoryName: 'المخارج والصفات',
+                title: 'صفات الحروف اللازمة (ذات الضد والتي لا ضد لها)',
+                definition: 'الصفة هي الكيفية التي تعرض للحرف عند حصوله في المخرج فتميز الحروف المشتركة في المخرج الواحد.',
+                letters: 'الهمس/الجهر، الشدة/الرخاوة، الاستعلاء/الاستفال، الإطباق/الانفتاح',
+                duration: 'صفات ذاتية ملازمة للحرف',
+                examples: [
+                    { text: 'حروف الهمس (جريان النفس): فَحَثَّهُ شَخْصٌ سَكَتْ.', surah: 'عكسها الجهر' },
+                    { text: 'حروف الشدة (انحباس الصوت): أَجِدْ قَطٍ بَكَتْ | والتوسط: لِنْ عُمَرْ.', surah: 'عكسها الرخاوة' },
+                    { text: 'صفات لا ضد لها: الصفير (ص ز س)، القلقلة (قطب جد)، اللين، الانحراف، التكرير، التفشي (ش)، الاستطالة (ض).', surah: 'صفات مميزة' }
+                ],
+                note: 'لولا الصفات لكانت الحروف المتحدة في المخرج (مثل الطاء والدال والتاء) صوتاً واحداً لا يتميز.'
+            },
+
+            // --- 10. الوقف والابتداء ---
+            {
+                id: 'waqf-marks',
+                category: 'waqf',
+                categoryName: 'الوقف والابتداء',
+                title: 'علامات الوقف في المصحف الشريف',
+                definition: 'رموز وضعها علماء الضبط لإرشاد القارئ إلى مواضع الوقف اللازم والممنوع والجائز حفاظاً على سلامة المعنى القرآني.',
+                letters: 'مـ ، لا ، ج ، صلى ، قلى ، ∴ ∴',
+                duration: 'ضبط الوقف والوصل',
+                examples: [
+                    { text: '(مـ) وقف لازم: يلزم الوقف عليه لأن وصله يغيّر المعنى ﴿إِنَّمَا يَسْتَجِيبُ الَّذِينَ يَسْمَعُونَ ۘ وَالْمَوْتَىٰ يَبْعَثُهُمُ اللَّهُ﴾.', surah: 'الوقف اللازم' },
+                    { text: '(لا) وقف ممنوع: يُنهى عن الوقف عليه لتعلق المعنى بما بعده إلا لضرورة انقطاع النفس.', surah: 'الوقف الممنوع' },
+                    { text: '(ج) وقف جائز مستوي الطرفين | (صلى) الوصل أولى | (قلى) الوقف أولى.', surah: 'الوقف الجائز' },
+                    { text: '(∴ ∴) تعانق الوقف: إذا وقفت على أحد الموضعين لا تقف على الآخر ﴿لَا رَيْبَ ۛ فِيهِ ۛ هُدًى﴾.', surah: 'تعانق الوقف' }
+                ],
+                note: 'الوقف على رؤوس الآي سنة متبعة عن النبي ﷺ حتى لو تعلق المعنى بما بعدها.'
+            }
+        ];
+
+        // ==========================================
+        // 3. بنك أسئلة الاختبار التفاعلي (Quiz Bank)
+        // ==========================================
+        const quizBank = [
+            {
+                category: 'أحكام النون الساكنة',
+                question: 'ما حكم النون الساكنة في قوله تعالى: ﴿مِن بَعْدِ﴾؟',
+                options: ['الإظهار الحلقي', 'الإقلاب', 'الإخفاء الحقيقي', 'الإدغام بغنة'],
+                correct: 1,
+                explanation: 'جاء بعد النون الساكنة حرف الباء، وحكمها الإقلاب (قلب النون ميماً مخفاة بغنة بمقدار حركتين).'
+            },
+            {
+                category: 'أحكام المدود',
+                question: 'ما نوع المد ومقدار حركاته في كلمة ﴿الضَّالِّينَ﴾؟',
+                options: ['مد واجب متصل (4-5 حركات)', 'مد عارض للسكون (2-4-6 حركات)', 'مد لازم كلمي مثقل (6 حركات)', 'مد بدل (حركتان)'],
+                correct: 2,
+                explanation: 'جاء بعد حرف المد (الألف) حرف مشدد (اللام) في كلمة واحدة، فهو مد لازم كلمي مثقل يُمد 6 حركات لزوماً.'
+            },
+            {
+                category: 'القلقلة',
+                question: 'أي من الحروف التالية ليس من حروف القلقلة؟',
+                options: ['القاف (ق)', 'الطاء (ط)', 'الفاء (ف)', 'الدال (د)'],
+                correct: 2,
+                explanation: 'حروف القلقلة خمسة مجموعة في عبارة (قُطْبُ جَدٍّ): القاف، الطاء، الباء، الجيم، الدال.'
+            },
+            {
+                category: 'أحكام النون الساكنة',
+                question: 'لماذا تُظهر النون الساكنة في كلمة ﴿الدُّنْيَا﴾ ولا تُدغم في الياء؟',
+                options: ['لأن الياء من حروف الحلق', 'لأن الإدغام لا يكون إلا في كلمتين', 'لأن النون متحركة', 'لوجود سكت واجب'],
+                correct: 1,
+                explanation: 'يُشترط في الإدغام أن يكون من كلمتين، فإذا اجتمعت النون الساكنة مع حروف (ينمو) في كلمة واحدة وجب الإظهار المطلق.'
+            },
+            {
+                category: 'أحكام الميم الساكنة',
+                question: 'ما حكم الميم الساكنة في قوله تعالى: ﴿تَرْمِيهِم بِحِجَارَةٍ﴾؟',
+                options: ['الإظهار الشفوي', 'الإدغام الشفوي', 'الإخفاء الشفوي', 'الإقلاب'],
+                correct: 2,
+                explanation: 'إذا جاء بعد الميم الساكنة حرف الباء في كلمتين فالحكم هو الإخفاء الشفوي مع غنة بمقدار حركتين.'
+            },
+            {
+                category: 'التفخيم والترقيق',
+                question: 'ما حكم اللام في لفظ الجلالة في قوله تعالى: ﴿بِسْمِ اللَّهِ﴾؟',
+                options: ['التفخيم دائماً', 'الترقيق لأنها سُبقت بكسر', 'الإدغام', 'القلقلة'],
+                correct: 1,
+                explanation: 'تُرقق لام لفظ الجلالة (الله) إذا سُبقت بحرف مكسور، وتُفخم إذا سُبقت بفتح أو ضم.'
+            },
+            {
+                category: 'أحكام المدود',
+                question: 'كم حركة يُمد (مد العوض) عند الوقف على قوله تعالى: ﴿عَلِيمًا حَكِيمًا﴾؟',
+                options: ['حركتان (يلحق بالمد الطبيعي)', '4 حركات', '6 حركات', 'لا يُمد أبداً'],
+                correct: 0,
+                explanation: 'مد العوض هو الوقف على تنوين النصب بألف مدية عوضاً عن التنوين، ويُمد بمقدار حركتين ويلحق بالمد الطبيعي.'
+            },
+            {
+                category: 'الوقف والابتداء',
+                question: 'على ماذا تدل علامة (مـ) الصغيرة فوق الكلمة في المصحف الشريف؟',
+                options: ['وقف ممنوع', 'وقف جائز والوصل أولى', 'وقف لازم (يلزم الوقف)', 'تعانق الوقف'],
+                correct: 2,
+                explanation: 'علامة (مـ) تدل على الوقف اللازم؛ لأن وصل الكلمة بما بعدها يوهم معنى غير مراد.'
+            },
+            {
+                category: 'النون والميم المشددتان',
+                question: 'ما مقدار الغنة في النون والميم المشددتين مثل ﴿إِنَّ﴾ و ﴿ثُمَّ﴾؟',
+                options: ['حركة واحدة', 'حركتان (أكمل ما تكون)', '4 حركات', 'لا غنة فيهما'],
+                correct: 1,
+                explanation: 'يجب إظهار الغنة في النون والميم المشددتين بمقدار حركتين وتكون الغنة فيهما أكمل ما تكون.'
+            },
+            {
+                category: 'المخارج والصفات',
+                question: 'ما هو المخرج العام الذي تخرج منه حروف المد الثلاثة (ا، و، ي)؟',
+                options: ['الحلق', 'الشفتان', 'الجوف', 'الخيشوم'],
+                correct: 2,
+                explanation: 'الجوف (وهو الخلاء الداخل في الحلق والفم) هو مخرج حروف المد الثلاثة.'
+            }
+        ];
+
+        // ==========================================
+        // 4. إدارة الحالة والعرض التفاعلي (UI Logic)
+        // ==========================================
+        let selectedCategory = 'all';
+        let searchQuery = '';
+
+        const categoryFiltersEl = document.getElementById('categoryFilters');
+        const rulesGridEl = document.getElementById('rulesGrid');
+        const emptyStateEl = document.getElementById('emptyState');
+        const searchInputEl = document.getElementById('searchInput');
+        const clearSearchEl = document.getElementById('clearSearch');
+        const resultsBadgeEl = document.getElementById('resultsBadge');
+        const currentCategoryTitleEl = document.getElementById('currentCategoryTitle');
+
+        // تحديث عدد الأحكام الإجمالي
+        document.getElementById('totalRulesCount').textContent = tajweedRules.length;
+
+        // دالة إزالة التشكيل لتسهيل البحث الذكي
+        function removeTashkeel(text) {
+            return text.replace(/[\u064B-\u065F\u0670]/g, '');
+        }
+
+        // توليد أزرار التصنيف
+        function renderCategories() {
+            categoryFiltersEl.innerHTML = categories.map(cat => {
+                const isActive = selectedCategory === cat.id;
+                return `
+                    <button 
+                        onclick="selectCategory('${cat.id}')"
+                        class="whitespace-nowrap px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 border ${
+                            isActive 
+                            ? 'bg-gold-500 text-obsidian-950 border-gold-500 shadow-md shadow-gold-500/20' 
+                            : 'bg-white dark:bg-obsidian-900 text-slate-600 dark:text-slate-300 border-stone-200 dark:border-obsidian-800 hover:border-gold-500/50'
+                        }"
+                    >
+                        <i class="fa-solid ${cat.icon} ${isActive ? 'text-obsidian-950' : 'text-gold-500'}"></i>
+                        <span>${cat.name}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // اختيار تصنيف
+        function selectCategory(catId) {
+            selectedCategory = catId;
+            renderCategories();
+            renderRules();
+        }
+
+        // إعادة ضبط الفلاتر
+        function resetFilters() {
+            selectedCategory = 'all';
+            searchQuery = '';
+            searchInputEl.value = '';
+            clearSearchEl.classList.add('hidden');
+            renderCategories();
+            renderRules();
+        }
+
+        // عرض البطاقات حسب التصفية والبحث
+        function renderRules() {
+            const cleanQuery = removeTashkeel(searchQuery.trim().toLowerCase());
+
+            const filtered = tajweedRules.filter(rule => {
+                const matchesCat = selectedCategory === 'all' || rule.category === selectedCategory;
+                if (!matchesCat) return false;
+
+                if (!cleanQuery) return true;
+
+                // البحث في العنوان، التعريف، الحروف، والأمثلة
+                const inTitle = removeTashkeel(rule.title).toLowerCase().includes(cleanQuery);
+                const inDef = removeTashkeel(rule.definition).toLowerCase().includes(cleanQuery);
+                const inLetters = removeTashkeel(rule.letters).toLowerCase().includes(cleanQuery);
+                const inExamples = rule.examples.some(ex => 
+                    removeTashkeel(ex.text.replace(/<[^>]*>/g, '')).toLowerCase().includes(cleanQuery)
+                );
+
+                return inTitle || inDef || inLetters || inExamples;
+            });
+
+            // تحديث العنوان والعداد
+            const activeCatObj = categories.find(c => c.id === selectedCategory);
+            currentCategoryTitleEl.innerHTML = `
+                <span class="w-1.5 h-7 rounded-full bg-gold-500 inline-block"></span>
+                <span>${activeCatObj ? activeCatObj.name : 'جميع أحكام التجويد'}</span>
+            `;
+            resultsBadgeEl.textContent = `${filtered.length} حكم تجويدي`;
+
+            if (filtered.length === 0) {
+                rulesGridEl.innerHTML = '';
+                emptyStateEl.classList.remove('hidden');
+                return;
+            }
+
+            emptyStateEl.classList.add('hidden');
+
+            rulesGridEl.innerHTML = filtered.map(rule => `
+                <article 
+                    onclick="openRuleModal('${rule.id}')"
+                    class="group cursor-pointer bg-white dark:bg-obsidian-900 rounded-3xl p-6 border border-stone-200 dark:border-obsidian-800 hover:border-gold-500/60 dark:hover:border-gold-500/50 shadow-sm hover:shadow-xl hover:shadow-gold-500/5 transition-all duration-300 flex flex-col justify-between"
+                >
+                    <div>
+                        <!-- رأس البطاقة -->
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-obsidian-800 text-gold-700 dark:text-gold-400 border border-stone-200 dark:border-obsidian-700">
+                                ${rule.categoryName}
+                            </span>
+                            <span class="text-xs text-slate-400 group-hover:text-gold-500 transition flex items-center gap-1">
+                                <span>التفاصيل</span>
+                                <i class="fa-solid fa-arrow-up-left text-[10px]"></i>
+                            </span>
+                        </div>
+
+                        <!-- عنوان الحكم -->
+                        <h4 class="text-lg font-extrabold text-slate-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition mb-2.5">
+                            ${rule.title}
+                        </h4>
+
+                        <!-- التعريف -->
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3 mb-4">
+                            ${rule.definition}
+                        </p>
+
+                        <!-- الحروف والمقدار -->
+                        <div class="space-y-2 mb-4 text-xs">
+                            <div class="flex items-start gap-2 bg-stone-50 dark:bg-obsidian-800/60 p-2.5 rounded-xl border border-stone-200/70 dark:border-obsidian-800">
+                                <span class="font-bold text-slate-500 dark:text-slate-400 shrink-0">الحروف:</span>
+                                <span class="font-bold text-slate-800 dark:text-gold-300">${rule.letters}</span>
+                            </div>
+                            <div class="flex items-center gap-2 bg-stone-50 dark:bg-obsidian-800/60 p-2.5 rounded-xl border border-stone-200/70 dark:border-obsidian-800">
+                                <span class="font-bold text-slate-500 dark:text-slate-400 shrink-0">المقدار:</span>
+                                <span class="font-semibold text-emerald-700 dark:text-emerald-400">${rule.duration}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الشاهد القرآني المختصر -->
+                    <div class="pt-3 border-t border-stone-100 dark:border-obsidian-800">
+                        <span class="text-[11px] font-semibold text-slate-400 block mb-1">مثال قرآني:</span>
+                        <div class="quran-text text-lg sm:text-xl text-slate-900 dark:text-slate-100 bg-stone-50/80 dark:bg-obsidian-950/70 px-3.5 py-2 rounded-xl border border-stone-200/50 dark:border-obsidian-800/80">
+                            ${rule.examples[0].text}
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // مستمع البحث الفوري
+        searchInputEl.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            if (searchQuery.trim().length > 0) {
+                clearSearchEl.classList.remove('hidden');
+            } else {
+                clearSearchEl.classList.add('hidden');
+            }
+            renderRules();
+        });
+
+        clearSearchEl.addEventListener('click', () => {
+            searchQuery = '';
+            searchInputEl.value = '';
+            clearSearchEl.classList.add('hidden');
+            searchInputEl.focus();
+            renderRules();
+        });
+
+        // ==========================================
+        // 5. نافذة التفاصيل الموسعة (Modal Logic)
+        // ==========================================
+        const ruleModalEl = document.getElementById('ruleModal');
+
+        function openRuleModal(ruleId) {
+            const rule = tajweedRules.find(r => r.id === ruleId);
+            if (!rule) return;
+
+            document.getElementById('modalCategory').textContent = rule.categoryName;
+            document.getElementById('modalTitle').textContent = rule.title;
+            document.getElementById('modalDefinition').textContent = rule.definition;
+            document.getElementById('modalLetters').textContent = rule.letters;
+            document.getElementById('modalDuration').textContent = rule.duration;
+
+            document.getElementById('modalExamples').innerHTML = rule.examples.map(ex => `
+                <div class="p-3.5 rounded-2xl bg-stone-50 dark:bg-obsidian-950 border border-stone-200 dark:border-obsidian-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div class="quran-text text-xl text-slate-900 dark:text-white">${ex.text}</div>
+                    <span class="text-xs font-medium px-2.5 py-1 rounded-lg bg-stone-200/70 dark:bg-obsidian-800 text-slate-600 dark:text-slate-400 shrink-0 self-start sm:self-center">
+                        ${ex.surah}
+                    </span>
+                </div>
+            `).join('');
+
+            const noteBox = document.getElementById('modalNoteBox');
+            if (rule.note) {
+                noteBox.classList.remove('hidden');
+                document.getElementById('modalNote').textContent = rule.note;
+            } else {
+                noteBox.classList.add('hidden');
+            }
+
+            ruleModalEl.classList.remove('hidden');
+            ruleModalEl.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            ruleModalEl.classList.add('hidden');
+            ruleModalEl.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        // إغلاق النافذة عند الضغط خارجها أو زر ESC
+        ruleModalEl.addEventListener('click', (e) => {
+            if (e.target === ruleModalEl) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !ruleModalEl.classList.contains('hidden')) closeModal();
+        });
+
+        // ==========================================
+        // 6. منطق الاختبار التفاعلي (Interactive Quiz)
+        // ==========================================
+        let currentQuizQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answeredCurrent = false;
+
+        function initQuiz() {
+            // خلط الأسئلة عشوائياً
+            currentQuizQuestions = [...quizBank].sort(() => Math.random() - 0.5);
+            currentQuestionIndex = 0;
+            score = 0;
+            answeredCurrent = false;
+
+            document.getElementById('quizQuestionArea').classList.remove('hidden');
+            document.getElementById('quizResultArea').classList.add('hidden');
+            document.getElementById('quizScoreText').textContent = '0';
+
+            renderQuizQuestion();
+        }
+
+        function renderQuizQuestion() {
+            answeredCurrent = false;
+            const q = currentQuizQuestions[currentQuestionIndex];
+            const total = currentQuizQuestions.length;
+
+            document.getElementById('quizProgressText').textContent = `السؤال ${currentQuestionIndex + 1} من ${total}`;
+            document.getElementById('quizProgressBar').style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
+            document.getElementById('quizCategoryBadge').textContent = q.category;
+            document.getElementById('quizQuestionText').innerHTML = q.question;
+
+            document.getElementById('quizExplanation').classList.add('hidden');
+            document.getElementById('nextQuestionBtn').classList.add('hidden');
+
+            const optionsEl = document.getElementById('quizOptions');
+            optionsEl.innerHTML = q.options.map((opt, idx) => `
+                <button 
+                    onclick="handleOptionClick(${idx})"
+                    id="quiz-opt-${idx}"
+                    class="w-full text-right p-4 rounded-2xl border-2 border-stone-200 dark:border-obsidian-700 bg-stone-50/60 dark:bg-obsidian-900/60 hover:border-gold-500/60 text-slate-800 dark:text-slate-200 font-semibold text-sm sm:text-base transition-all flex items-center justify-between gap-3"
+                >
+                    <span>${opt}</span>
+                    <span class="w-6 h-6 rounded-full border border-stone-300 dark:border-obsidian-600 flex items-center justify-center text-xs shrink-0">
+                        ${['أ', 'ب', 'ج', 'د'][idx]}
+                    </span>
+                </button>
+            `).join('');
+        }
+
+        function handleOptionClick(selectedIdx) {
+            if (answeredCurrent) return;
+            answeredCurrent = true;
+
+            const q = currentQuizQuestions[currentQuestionIndex];
+            const isCorrect = selectedIdx === q.correct;
+
+            if (isCorrect) {
+                score++;
+                document.getElementById('quizScoreText').textContent = score;
+            }
+
+            // تلوين الخيارات
+            q.options.forEach((_, idx) => {
+                const btn = document.getElementById(`quiz-opt-${idx}`);
+                btn.disabled = true;
+                btn.classList.remove('hover:border-gold-500/60');
+
+                if (idx === q.correct) {
+                    btn.classList.remove('border-stone-200', 'dark:border-obsidian-700', 'bg-stone-50/60', 'dark:bg-obsidian-900/60');
+                    btn.classList.add('border-emerald-500', 'bg-emerald-500/15', 'text-emerald-800', 'dark:text-emerald-300');
+                    btn.querySelector('span:last-child').innerHTML = '<i class="fa-solid fa-check text-emerald-500"></i>';
+                } else if (idx === selectedIdx && !isCorrect) {
+                    btn.classList.remove('border-stone-200', 'dark:border-obsidian-700', 'bg-stone-50/60', 'dark:bg-obsidian-900/60');
+                    btn.classList.add('border-rose-500', 'bg-rose-500/15', 'text-rose-800', 'dark:text-rose-300');
+                    btn.querySelector('span:last-child').innerHTML = '<i class="fa-solid fa-xmark text-rose-500"></i>';
+                } else {
+                    btn.classList.add('opacity-50');
+                }
+            });
+
+            // إظهار التوضيح العلمي
+            const expBox = document.getElementById('quizExplanation');
+            const expTitle = document.getElementById('explanationTitle');
+            const expIcon = document.getElementById('explanationIcon');
+
+            expTitle.textContent = isCorrect ? 'إجابة صحيحة! أحسنت:' : 'إجابة غير صحيحة — التوضيح:';
+            expIcon.className = isCorrect 
+                ? 'fa-solid fa-circle-check text-emerald-500 mt-1 text-lg' 
+                : 'fa-solid fa-circle-exclamation text-rose-500 mt-1 text-lg';
+            document.getElementById('explanationBody').textContent = q.explanation;
+            expBox.classList.remove('hidden');
+
+            // إظهار زر التالي
+            const nextBtn = document.getElementById('nextQuestionBtn');
+            nextBtn.classList.remove('hidden');
+            nextBtn.querySelector('span').textContent = 
+                currentQuestionIndex === currentQuizQuestions.length - 1 ? 'عرض النتيجة النهائية' : 'السؤال التالي';
+        }
+
+        document.getElementById('nextQuestionBtn').addEventListener('click', () => {
+            if (currentQuestionIndex < currentQuizQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuizQuestion();
+            } else {
+                showFinalResults();
+            }
+        });
+
+        function showFinalResults() {
+            document.getElementById('quizQuestionArea').classList.add('hidden');
+            document.getElementById('quizResultArea').classList.remove('hidden');
+
+            const total = currentQuizQuestions.length;
+            document.getElementById('finalScoreNumber').textContent = `${score} / ${total}`;
+
+            let msg = '';
+            const ratio = score / total;
+            if (ratio >= 0.9) {
+                msg = 'ما شاء الله! إتقان ممتاز ومعرفة راسخة بأحكام التجويد.';
+            } else if (ratio >= 0.7) {
+                msg = 'أداء رائع جداً! لديك إلمام جيد، ويمكنك مراجعة البطاقات لبلوغ الإتقان التام.';
+            } else {
+                msg = 'بداية طيبة! ننصحك بتصفح بطاقات الأحكام أعلاه ثم إعادة الاختبار لترسيخ القواعد.';
+            }
+            document.getElementById('finalScoreMessage').textContent = msg;
+        }
+
+        function restartQuiz() {
+            initQuiz();
+        }
+
+        // ==========================================
+        // 7. تبديل الوضع الليلي والنهاري (Theme Toggle)
+        // ==========================================
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlEl = document.documentElement;
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlEl.classList.toggle('dark');
+            const isDark = htmlEl.classList.contains('dark');
+            themeIcon.className = isDark ? 'fa-solid fa-sun text-base' : 'fa-solid fa-moon text-base';
+        });
+
+        // تشغيل التطبيق عند التحميل
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            renderRules();
+            initQuiz();
+        });
+    </script>
+</body>
+</html>
